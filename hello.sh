@@ -53,6 +53,7 @@
 # -ge greater than or equal to >=
 # -lt less than   <
 # -le less than or equal <=
+
 # if [ $count -eq 10 ]
 # then
 #     echo "Condition is true"
@@ -149,10 +150,282 @@
 
 #-----------Epi 8 ----------------
 
-age= 55
-if [ "$age" -gt 18 ]&&[ "$age" -lt 30]
-then 
-    echo
+# age=55
+# if [ "$age" -gt 18 ] && [ "$age" -lt 30 ]
+# then 
+#     echo "valid age"
+# else
+#     echo "Age not valid"
+# fi
+
+# age=55
+# if [[ "$age" -gt 18 && "$age" -lt 30 ]]
+# then 
+#     echo "valid age"
+# else
+#     echo "Age not valid"
+# fi
+
+#---------Epi 9 ------------------
+
+# age=5
+# if [ "$age" -gt 18 ] || [ "$age" -lt 3 ]
+# then 
+#     echo "valid age"
+#     else
+#     echo "Age not valid"
+# fi
+
+# age=5
+# if [ "$age" -eq 18 -o "$age" -eq 5 ]
+# then 
+#     echo "valid age"
+#     else
+#     echo "Age not valid"
+# fi
+
+#---------Epi 10 ------------------
+# Arithmatic commands
+
+# num1=5
+# num2=9
+# echo $(( num1 + num2 ))
+# echo $(( num1 - num2 ))
+# echo $(( num1 * num2 ))
+# echo $(( num1 / num2 ))
+# echo $(( num1 % num2 ))
+
+# echo $(expr $num1 + $num2 )
+# echo $(expr $num1 - $num2 )
+# echo $(expr $num1 \* $num2 )
+# echo $(expr $num1 / $num2 )
+# echo $(expr $num1 % $num2 )
+
+#---------Epi 11 ------------------
+# Arithmatic commands on decimal numbers
+
+# num1=5.9
+# num2=9.8
+# echo "$num1+$num2" | bc              # need to install bc package 
+# bc package used for all arithmetic, trignometric opeartions, square root..and many more
+# -l for math libraray (used with bc for square or squareroot operations)
+
+#---------Epi 12 ------------------
+# CASE statement
+
+# vehicle=$1
+
+# case $vehicle in
+#     "car" )
+#         echo "Rent of $vechicle is 100 dollar" ;;
+#     "van" )
+#         echo "rent of $vehicle is 50 dollar" ;;
+#     "bicycle" )
+#         echo "rent of $vehicle is 20 dollar " ;;
+#     . )
+#         echo "Unknown vehicle"
+# esac
+
+#---------Epi 13 ------------------
+# echo -e "enter the charater :\c"
+# read value
+
+# case $value in
+#     [a-z] )
+#         echo "User entered $value a to z" ;;
+#     [A-Z] )
+#         echo "User entered $value A to Z" ;;
+#     [0-9] )
+#         echo "User entered $value 0 to 9" ;;
+#     ? )
+#         echo "User entered $value special charater" ;;
+#     . )
+#         echo "Unknown input"
+# esac
+
+#while testing above code 
+#>>LANG=C
+#then only you will get correct outputs
+
+#---------Epi 14 ------------------
+#ARRAY
+
+# os=('Ubuntu' 'Windows' 'Kali')
+# echo "${os[@]}"
+# echo "${os[1]}"
+# echo "${!os[@]}"                  # indexes of array
+# echo "${#os[@]}"                  #length of array
+# os[3]='macc'                      #Add element to the array
+# os[2]="sam"                       #update element to the array
+# unset os[2]                       # remove element
+# os[10]="yess"                     # adding element to the 10th index (not necessary to have each index position ignores )
+
+# echo "${os[@]}"
+# echo "${!os[@]}"
+
+# string=dashcbak
+# echo "${string[@]}"
+# echo "${string[1]}"            # no output because entire string is 0th index
+
+#---------Epi 15 ------------------
+#WHILE LOOP
+# while [condition]
+# do 
+#     condition1
+#     condition2
+#     condition3
+# done
+
+# n=1
+# while [ $n -le 10 ]          # another way to write-  while (( $n <= 10 ))
+# do 
+#     echo "$n"
+#     n=$(( n+1 ))             # another way to write - (( n++ )) or (( ++n ))
+# done
+
+#---------Epi 16 ------------------
+#WHILE LOOP
+# n=1
+# while (( $n <= 10 ))          
+# do 
+#     echo "$n"
+#     (( n++ ))   
+#     sleep 1                     #creating delay
+# done
+
+# n=1
+# while (( $n <= 2 ))          
+# do 
+#     echo "$n"
+#     (( n++ ))   
+#     # gnome-terminal &
+# done
+
+#---------Epi 17 ------------------
+#WHILE LOOP
+#read file
+
+# while read p
+# do
+#     echo $p 
+# done < hello.sh
+#In above code first '>' this redirection read file
+#then send it to while loop for operation
+
+# cat hello.sh | while read p             #cat is reading a file and send to while
+# do
+#     echo $p 
+# done 
+
+# while IFS= read -r line              #not understood well with is piece
+# do
+#     echo $line
+# done < /dir/new_file.txt
+
+#---------Epi 18 ------------------
+#UNTIL LOOP
+#syntax
+#until [condition]
+#do
+#   command1
+#   commnad2
+
+#done
+
+# n= 1
+# until [ $n -ge 10 ]
+# do
+#     echo $n
+#     (( n++ ))
+# done
+
+#---------Epi 19 ------------------
+#FOR LOOP
+#syntax
+# for VARIABLE in 1 2 3 4 . . N 
+# do 
+#     command1
+#     commnad2
+# done
+
+# for VARIABLE in file1 file2 file3  
+# do 
+#     command1 on $VARIABLE
+#     commnad2
+# done
+
+# for OUTPUT in $(Linux-Or-Unix-Command-Here) 
+# do 
+#     command1 on $OUTPUT
+#     commnad2 on $OUTPUT
+# done
+
+# other ways also present
+
+# for i in {1..20..2}             #{start..end..increment}
+# do 
+#     echo $i
+# done
+
+# for (( i=0; i<7; i++ ))             #{start..end..increment}
+# do 
+#     echo $i
+# done
+
+#--------------Episode 20 ---------
+# FOR LOOP with file and commands
+
+# for command in ls pwd date 
+# do
+#     echo "-----------------$command------------------"
+#     $command
+# done
+
+# for item in *
+# do
+#     if [ -f $item ]
+#     then
+#         echo $item  
+#         # cat $item
+#     fi
+# done  
+
+#---------------Episode 21 ----------
+#SELECT LOOP
+# syntaxselect varName in list
+# do 
+#     command1
+#     command2
+# done
+
+# select name in sam pam ram jam
+# do
+#     echo "$name selected"
+# done
+
+select name in sam pam tom 
+do
+    case $name in 
+    sam )
+        echo mark selected
+        ;;
+    pam )
+        echo pam selected
+        ;;
+    tom )
+        echo tom selected
+        ;;
+    * )
+        echo "Please provid number between 1..3"    
+    esac
+done
+
+
+
+
+
+
+
 
 
 
